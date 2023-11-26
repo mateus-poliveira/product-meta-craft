@@ -2,7 +2,7 @@ import { PromptTemplate } from "langchain/prompts";
 import { ChatOpenAI } from "langchain/chat_models/openai";
 
 const model = new ChatOpenAI({
-  openAIApiKey: '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',
+  openAIApiKey: '-',
 });
 
 const promptTemplate = PromptTemplate.fromTemplate(

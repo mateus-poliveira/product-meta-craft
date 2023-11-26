@@ -11,7 +11,7 @@ const model = new OpenAI({
 
 const promptTemplate = new PromptTemplate({
   inputVariables: ["listOfProducts"],
-  template: `Analyze the list of products above and generate a description of the page.
+  template: `Analyze the list of products below and generate a description of the page.
   I'm a SEO manager that wants to otimise this page for search engines.
   You are a expert SEO copywriter that will help me to create a description of this page.
   This description needs to be 3 lines long and have 160 characters.

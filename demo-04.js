@@ -14,7 +14,7 @@ import { SimpleSequentialChain, LLMChain } from "langchain/chains";
 import { OpenAI } from "langchain/llms/openai";
 
 const model = new OpenAI({
-  openAIApiKey: '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',
+  openAIApiKey: '-',
 });
 
 const loader = new CheerioWebBaseLoader(

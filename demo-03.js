@@ -12,7 +12,7 @@ import { StringOutputParser } from "langchain/schema/output_parser";
 import { formatDocumentsAsString } from "langchain/util/document";
 
 const model = new ChatOpenAI({
-  openAIApiKey: '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',
+  openAIApiKey: '-',
 });
 
 const loader = new CheerioWebBaseLoader(
