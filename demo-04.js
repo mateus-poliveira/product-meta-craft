@@ -10,8 +10,10 @@ import {
 } from "langchain/schema/runnable";
 import { StringOutputParser } from "langchain/schema/output_parser";
 import { formatDocumentsAsString } from "langchain/util/document";
+import { SimpleSequentialChain, LLMChain } from "langchain/chains";
+import { OpenAI } from "langchain/llms/openai";
 
-const model = new ChatOpenAI({
+const model = new OpenAI({
   openAIApiKey: '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',
 });
 
@@ -50,7 +52,25 @@ const chain = RunnableSequence.from([
 
 // const result = await chain.invoke("What is the powerhouse of the cell?");
 
-const result = await chain.batch([
+const responseTemplate1 = `
+Split this list of urls
+
+list: {input}
+`;
+
+const reviewPromptTemplate1 = new PromptTemplate({
+  template: responseTemplate1,
+  inputVariables: ["list"],
+});
+
+const splitChain = new LLMChain({ model, prompt: reviewPromptTemplate1 });
+
+const overallChain = new SimpleSequentialChain({
+  chains: [splitChain, generateChain],
+  verbose: true,
+});
+
+const result = await overallChain.batch([
   { url: "https://www.ebay.com/b/Clothing-Shoes-Accessories/11450/bn_1852545" },
   { url: "https://www.ebay.com/b/Designer-Handbags/bn_7117629183" }
 ]);
