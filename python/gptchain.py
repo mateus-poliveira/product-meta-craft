@@ -11,7 +11,7 @@ class GPTLink:
         self.example3 = Loader("https://www.ebay.com/b/CHANEL-Eyeglass-Frames/180957/bn_8430684")
         self.example3.extract()
         self.llm = OpenAI(temperature=.7)
-        self.prompt = PromptTemplate.from_template("""
+        self.fewShot = """
             You are an SEO expert that creates a compelling description for a web page.  You use the information on
             the page to create this description.  You should not use the meta descriptions within the <head> tag to generate this
             description.  The content <h1>, <h2>, <h3> tags are particularly important.  Keep the descriptions under 
@@ -29,7 +29,9 @@ class GPTLink:
                                 
             HTML: {thirdExtraction}
             Description: Capture great deals on stylish CHANEL Eyeglass Frames at the lowest prices. Choose by frame shape like Full Rim, Round, Cats Eye &amp; more to complete your look. Free shipping for many items!
-
+"""
+        self.fewShot.format(firstExtraction=self.example1.extraction, secondExtraction=self.example2.extraction, thirdExtraction=self.example3.extraction)
+        self.prompt = PromptTemplate.from_template(fewShot + """
             Give a description for this HTML:
             HTML: {url}
             Description:
@@ -38,9 +40,8 @@ class GPTLink:
         for url in urls:
             loader = Loader(url)
             loader.extract()
-            formattedPrompt = self.prompt.format(firstExtraction=self.example1.extraction, secondExtraction=self.example2.extraction, thirdExtraction=self.example3.extraction)
             print("-------------------------------------------------")
-            answerChain = LLMChain(llm, formattedPrompt)
+            answerChain = LLMChain(llm, self.prompt)
             html = Loader(url)
             html.extract()
             answerChain(html.extraction)
