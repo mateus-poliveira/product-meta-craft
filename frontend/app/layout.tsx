@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import AsideNavigation from './components/aside-navigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="flex flex-col h-screen text-gray-50">
+          <header className="w-full bg-gray-900 p-3.5 border-b-4 border-gray-800 pl-7">
+            <h1 className='text-2xl font-black'>Product Meta Craft</h1>
+          </header>
+          <div className="flex h-full">
+            <AsideNavigation />
+            {children}
+          </div>
+        </div>
+      </body>
     </html>
   )
 }
