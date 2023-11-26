@@ -5,7 +5,7 @@ Due to environment issues, and the compressed timeframe we had a dived and conqu
 The root directory is using langchainJS, and this is the primary app.
 An alteernate backend using langchain is in the python directory
 
-#Python
+# Python
 The Python backend can be run separately with test values. Through /usr/bin/python3 /your/path/gptchain.py
 
 You will need to set OPENAI_API_KEY in your environment variable and install playwright.
