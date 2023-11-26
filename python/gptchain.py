@@ -31,7 +31,7 @@ class GPTLink:
             Description: Capture great deals on stylish CHANEL Eyeglass Frames at the lowest prices. Choose by frame shape like Full Rim, Round, Cats Eye &amp; more to complete your look. Free shipping for many items!
 """
         self.fewShot.format(firstExtraction=self.example1.extraction, secondExtraction=self.example2.extraction, thirdExtraction=self.example3.extraction)
-        self.prompt = PromptTemplate.from_template(fewShot + """
+        self.prompt = PromptTemplate.from_template(self.fewShot + """
             Give a description for this HTML:
             HTML: {url}
             Description:
