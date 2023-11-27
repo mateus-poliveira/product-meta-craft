@@ -27,3 +27,4 @@ A few shot template strategy is used.  I selected three instances where a busine
 description for a page.  Presumably these are the best descriptions, as most browse pages have very similar descriptions,
 but just insert the category name.  The LLM is also given the context that he is a SEObot.  I wished to do weighting in 
 the context, but this is a furture improvemnt.  Because BeautifulSoup strips tag names, accuracy would improve if the extracted data was labeled for breadcrumbs, side nav header text, etc.
+The extracted text does still contain some garbage, some regex would be useful to cut down noise and token usage.
