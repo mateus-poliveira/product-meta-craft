@@ -9,7 +9,8 @@ An alteernate backend using langchain is in the python directory
 The Python backend can be run separately with test values. Through /usr/bin/python3 /your/path/gptchain.py
 
 PLEASE NOTE eBay bot detection may be a problem for you, it is not a problem if you are on the eBay VPN or an 
-internal IP.  I will try to find out what the criteria is, but I can't on Thanksgiving weekend.
+internal IP.  I will try to find out what the criteria is, but I can't on Thanksgiving weekend.  It seems that Playwright gets
+tarpitted, you will timeout on your scraping.
 
 You will need to set OPENAI_API_KEY in your environment variable and install playwright.
 
