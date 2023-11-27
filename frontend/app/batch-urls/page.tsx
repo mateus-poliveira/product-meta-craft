@@ -1,8 +1,5 @@
 'use client'
 
-import { LLMChain } from 'langchain/chains';
-import { OpenAI } from 'langchain/llms/openai';
-import { PromptTemplate } from 'langchain/prompts';
 import { useState } from 'react';
 
 export default function Home() {
@@ -23,7 +20,7 @@ export default function Home() {
 
   return (
     <main className="flex w-4/5 bg-gray-900 flex-col p-7 pt-14">
-      <h2 className='text-xl font-bold mb-5'>Get a description of a e-commerce page based on the copied text of the page</h2>
+      <h2 className='text-xl font-bold mb-5'>Get a description of a e-commerce page based on a batch of urls</h2>
       <p className='mb-10 max-w-2xl'>Input a copied text of a entire page to generate a detailed and captivating page description for an e-commerce website, showcasing the unique features and benefits of each product, enticing potential customers to make a purchase and enhancing the overall shopping experience.</p>
       <form className='flex flex-col max-w-2xl border-gray-800 border p-7' onSubmit={handleSubmit}>
         <label className='mb-3.5'>Add list of products</label>
