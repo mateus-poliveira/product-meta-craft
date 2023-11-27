@@ -10,7 +10,8 @@ class GPTLink:
         self.example2.extract()
         self.example3 = Loader("https://www.ebay.com/b/CHANEL-Eyeglass-Frames/180957/bn_8430684")
         self.example3.extract()
-        self.llm = OpenAI(temperature=.7,model="gpt-4-1106-preview")
+        #self.llm = OpenAI(temperature=.7,model="gpt-4-1106-preview") switch to personal api key
+        self.llm = OpenAI(temperature=.7,model="gpt-3.5-turbo-1106")
         fewShotTemplate = """
             You are an SEO expert that creates a compelling description for a web page.  You use the information on
             the page to create this description.  You should not use the meta descriptions within the <head> tag to generate this
