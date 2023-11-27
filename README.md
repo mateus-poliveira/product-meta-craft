@@ -127,6 +127,8 @@ The Javascript demos and frontend uses the LangChain Js version.
 I encountered difficulties setting up the Python environment, so I decided to explore and experiment with the JavaScript version instead.
 The intended approach was to break down the final goals into smaller steps to make progress more effectively.
 
+The following demos require NodeJs 18+
+
 We have implemented three different approaches to generate descriptions:
 1. Using a simple text list as a prompt.
 2. Mannually copying and using all the text from the page.
