@@ -47,7 +47,7 @@ class GPTLink:
             answerChain = LLMChain(llm=self.llm, prompt=self.prompt)
             html = Loader(url)
             html.extract()
-            answerChain(html.extraction)
+            answerChain.run(html.extraction)
             print(answerChain)
 
 def main():
