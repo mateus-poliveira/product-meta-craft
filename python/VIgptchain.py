@@ -3,7 +3,8 @@ from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 from loader import Loader
-class GPTLink:
+from VIloader import VILoader
+class VIGPTLink:
     def __init__(self):
         self.example1 = Loader("https://www.ebay.com/b/VMAXTANKS-Rechargeable-Batteries/48619/bn_7114644579")
         self.example1.extract()
@@ -11,8 +12,7 @@ class GPTLink:
         self.example2.extract()
         self.example3 = Loader("https://www.ebay.com/b/CHANEL-Eyeglass-Frames/180957/bn_8430684")
         self.example3.extract()
-        self.llm = ChatOpenAI(temperature=.7,model="gpt-4-1106-preview") 
-
+        self.llm = ChatOpenAI(temperature=.7,model="gpt-4-1106-preview") #switch to personal api key
         #self.llm = OpenAI(temperature=.7,model="gpt-3.5-turbo-1106")
         fewShotTemplate = """
             You are an SEO expert that creates a compelling description for a web page with fewer than 160 characters (including spaces).  You use the information 
@@ -48,13 +48,13 @@ class GPTLink:
             answerChain = LLMChain(llm=self.llm, prompt=self.prompt)
             html = Loader(url)
             html.extract()
-            response = answerChain.run(html.extraction)
+            response=answerChain.run(html.extraction)
             print(response)
 
 def main():
     print("Hello World!")
-    gptLink = GPTLink()
-    urls = ["https://www.ebay.com/b/222-Fifth/bn_7064136195"]
+    gptLink = VIGPTLink()
+    urls = ["https://www.ebay.com/itm/334470172936"]
     gptLink.createDescriptions(urls)
 if __name__ == "__main__":
     main()
