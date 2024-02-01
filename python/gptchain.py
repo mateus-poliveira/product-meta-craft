@@ -11,7 +11,8 @@ class GPTLink:
         self.example2.extract()
         self.example3 = Loader("https://www.ebay.com/b/CHANEL-Eyeglass-Frames/180957/bn_8430684")
         self.example3.extract()
-        self.llm = ChatOpenAI(temperature=.7,model="gpt-4-1106-preview") #switch to personal api key
+        self.llm = ChatOpenAI(temperature=.7,model="gpt-4-1106-preview") 
+
         #self.llm = OpenAI(temperature=.7,model="gpt-3.5-turbo-1106")
         fewShotTemplate = """
             You are an SEO expert that creates a compelling description for a web page with fewer than 160 characters (including spaces).  You use the information 
@@ -47,8 +48,8 @@ class GPTLink:
             answerChain = LLMChain(llm=self.llm, prompt=self.prompt)
             html = Loader(url)
             html.extract()
-            answerChain.run(html.extraction)
-            print(answerChain)
+            response = answerChain.run(html.extraction)
+            print(response)
 
 def main():
     print("Hello World!")
